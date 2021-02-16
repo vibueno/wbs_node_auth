@@ -14,12 +14,16 @@ const userController = {
   },
   admin: async (req, res) => {
     req.session.isConnected
-      ? res.status(200).send('Admin page!!')
+      ? res
+          .status(200)
+          .send('Admin page!! <a href="/session/logout">logout!</a>')
       : res.redirect('/session/login');
   },
   logout: async (req, res) => {
-    req.session.destroy();
-    res.redirect('/session/login');
+    req.session.destroy(err => {
+      if (err) console.error(err);
+      else res.redirect('/session/login');
+    });
   },
 };
 
