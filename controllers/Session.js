@@ -8,6 +8,8 @@ const userController = {
     if (req.body.username === 'John' && req.body.psw === 'Doe') {
       req.session.isConnected = true;
       res.redirect('/session/admin');
+    } else {
+      res.redirect('/session/login');
     }
   },
   admin: async (req, res) => {
