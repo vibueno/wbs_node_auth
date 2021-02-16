@@ -28,10 +28,11 @@ app.use(
 );
 
 // import routes
-const pokeRoutes = require('./routes/User');
+const userRoutes = require('./routes/User');
+const sessionRoutes = require('./routes/Session');
 
-// use postsRoutes
-app.use('/', pokeRoutes);
+app.use('/', userRoutes);
+app.use('/session', sessionRoutes);
 
 // Starting server
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
